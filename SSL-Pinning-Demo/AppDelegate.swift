@@ -24,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     kTSKEnforcePinning : true,
                     kTSKPublicKeyAlgorithms: [kTSKAlgorithmRsa2048],
                     kTSKPublicKeyHashes: [
-                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=",
-                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX="
+                        "Zg+vBj/tbHL9SEuRUAIqfG6ORWrbE9fHYgMfpiC6EIM=",
+                        "980Ionqp3wkYtN9SZVgMzuWQzJta1nfxNPwTem1X0uc="
                     ],]]] as [String : Any]
 
         TrustKit.initialize(withConfiguration: trustKitConfig)        
