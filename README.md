@@ -18,6 +18,8 @@ openssl dgst -sha256 -binary public.key | openssl enc -base64
 
 ## References
 
+* [SSL Pinning for Increased App Security](https://possiblemobile.com/2013/03/ssl-pinning-for-increased-app-security/)
 * [HTTP Public Key Pinning Extension HPKP for Apache, NGINX and Lighttpd](https://raymii.org/s/articles/HTTP_Public_Key_Pinning_Extension_HPKP.html)
+* [TrustKit Framework](https://github.com/datatheorem/TrustKit)
 * [Bank.lv Rates Description](https://www.bank.lv/component/content/article/8656-eiropas-centrls-bankas-publictie-eiro-atsauces-kursi-xml-formt)
 * [Bank.lv Rates XML](https://www.bank.lv/vk/ecb.xml)
