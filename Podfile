@@ -3,4 +3,5 @@ use_frameworks!
 
 target 'SSL-Pinning-Demo' do
     pod 'SWXMLHash'
+    pod 'TrustKit'
 end

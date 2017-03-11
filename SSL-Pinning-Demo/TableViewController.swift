@@ -27,7 +27,7 @@ class TableViewController: UITableViewController {
     func handleRefresh(_ refreshControl: UIRefreshControl) {
 
         let request = URLRequest(url: URL(string: "https://www.bank.lv/vk/ecb.xml")!)
-        let session = URLSession.shared
+        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: nil)
         session.dataTask(with: request) {data, response, error in
             if data != nil {
                 let xml = SWXMLHash.parse(data!)
@@ -59,4 +59,8 @@ class TableViewController: UITableViewController {
         cell.detailTextLabel?.text = String(currency.rate)
         return cell
     }
+}
+
+extension TableViewController: URLSessionDelegate {
+
 }
