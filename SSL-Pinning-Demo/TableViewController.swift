@@ -25,23 +25,26 @@ class TableViewController: UITableViewController {
     }
 
     func handleRefresh(_ refreshControl: UIRefreshControl) {
-        let urlComponents = URLComponents(string: "https://www.bank.lv/vk/ecb.xml")!
-        let request = URLRequest(url: urlComponents.url!)
+
+        let request = URLRequest(url: URL(string: "https://www.bank.lv/vk/ecb.xml")!)
         let session = URLSession.shared
         session.dataTask(with: request) {data, response, error in
-            let xml = SWXMLHash.parse(data!)
-            self.currencyList = []
-            for elem in xml["CRates"]["Currencies"]["Currency"] {
-                if let idString = elem["ID"].element?.text,
-                    let rateString =  elem["Rate"].element?.text{
-                    let currency = Currency(id: idString, rate: Double(rateString)!)
-                    self.currencyList.append(currency)
-                    DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
-                        self.tableView.reloadData()
-                        refreshControl.endRefreshing()
-                    })
+            if data != nil {
+                let xml = SWXMLHash.parse(data!)
+                self.currencyList = []
+                for elem in xml["CRates"]["Currencies"]["Currency"] {
+                    if let idString = elem["ID"].element?.text,
+                        let rateString =  elem["Rate"].element?.text{
+                        let currency = Currency(id: idString, rate: Double(rateString)!)
+                        self.currencyList.append(currency)
+                        DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+                            self.tableView.reloadData()
+                            refreshControl.endRefreshing()
+                        })
+                    }
                 }
             }
+
             }.resume()
     }
 
